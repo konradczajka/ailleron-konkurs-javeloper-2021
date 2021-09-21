@@ -24,8 +24,8 @@ class CachingWeatherConnectorTest {
         var result = cachingConnector.weather("X");
 
         // Then
-        assertThat(result.getLocation()).isEqualTo("X");
-        assertThat(result.getTemp()).isEqualTo(1.0);
+        assertThat(result.location()).isEqualTo("X");
+        assertThat(result.temp()).isEqualTo(1.0);
     }
 
     @Test

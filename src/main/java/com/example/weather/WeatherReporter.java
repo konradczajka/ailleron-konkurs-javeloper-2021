@@ -17,7 +17,7 @@ class WeatherReporter {
               .parallel()
               .peek(location -> log("Preparing weather report for " + location))
               .map(weatherConnector::weather)
-              .peek(weather -> log("Sending weather report for %s with temperature %.2f".formatted(weather.getLocation(), weather.getTemp())))
+              .peek(weather -> log("Sending weather report for %s with temperature %.2f".formatted(weather.location(), weather.temp())))
               .forEach(mailProvider::sendMail);
     }
 
