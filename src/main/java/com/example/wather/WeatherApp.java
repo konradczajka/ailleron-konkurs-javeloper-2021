@@ -83,4 +83,9 @@ class WeatherProviderUtilsCommonHelper {
 class Weather {
     private String location;
     private double temp;
+
+    public Weather(String location, double temp) {
+        this.location = location;
+        this.temp = temp;
+    }
 }
