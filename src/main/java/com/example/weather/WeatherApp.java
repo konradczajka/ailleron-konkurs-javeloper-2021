@@ -19,17 +19,12 @@ public class WeatherApp {
         WeatherReportMailProvider dummyMailProvider = weather -> {};
 
         Runnable task = () -> {
-            WeatherProviderUtilsCommonHelper provider = new WeatherProviderUtilsCommonHelper(
+            WeatherReporter provider = new WeatherReporter(
                     new CachingWeatherConnector(dummyConnector),
                     dummyMailProvider);
 
             String location = locations[random.nextInt(locations.length)];
-
-            log(location);
-
-            Weather weather = provider.checkWeatherAndSendMailWithTemperature(location);
-
-            log(weather);
+            provider.checkWeatherAndSendMailWithTemperature(location);
         };
 
         var pool = new ForkJoinPool(locations.length * 20);
@@ -41,13 +36,5 @@ public class WeatherApp {
         } finally {
             pool.shutdown();
         }
-    }
-
-    private static void log(Object object) {
-        System.out.println("Weather=" + object.toString());
-    }
-
-    private static void log(String text) {
-        System.out.println("Weather=" + text);
     }
 }
