@@ -17,13 +17,11 @@ class WeatherProviderUtilsCommonHelper {
     public Weather checkWeatherAndSendMailWithTemperature(String location) {
 
         try {
-            String[] weatherData = weatherConnector.weather(location);
-
-            Weather weather = new Weather(weatherData[0], Double.valueOf(weatherData[1]));
+            Weather weather = weatherConnector.weather(location);
 
             cacheWeather.put(location, weather);
 
-            mailProvider.sendMail(location, weatherData[0], weatherData[1]);
+            mailProvider.sendMail(location, weather.getLocation(), String.valueOf(weather.getTemp()));
 
             return weather;
         } catch (Exception e) {

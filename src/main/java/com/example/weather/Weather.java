@@ -10,6 +10,14 @@ class Weather {
         this.temp = temp;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public double getTemp() {
+        return temp;
+    }
+
     @Override
     public String toString() {
         return "Weather{" +
