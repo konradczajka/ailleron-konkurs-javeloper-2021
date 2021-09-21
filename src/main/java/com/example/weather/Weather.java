@@ -1,9 +1,11 @@
 package com.example.weather;
 
-class Weather {
+import java.util.Objects;
 
-    private String location;
-    private double temp;
+final class Weather {
+
+    private final String location;
+    private final double temp;
 
     public Weather(String location, double temp) {
         this.location = location;
@@ -16,6 +18,23 @@ class Weather {
 
     public double getTemp() {
         return temp;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Weather weather = (Weather) o;
+        return Double.compare(weather.temp, temp) == 0 && Objects.equals(location, weather.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location, temp);
     }
 
     @Override
