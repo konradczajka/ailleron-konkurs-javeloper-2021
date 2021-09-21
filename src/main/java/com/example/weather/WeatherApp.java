@@ -16,7 +16,7 @@ public class WeatherApp {
         Random random = new Random();
 
         WeatherConnector dummyConnector = location -> new Weather(location, 20.0);
-        MailProvider dummyMailProvider = (location, weatherDatum, datum) -> {};
+        WeatherReportMailProvider dummyMailProvider = weather -> {};
 
         Runnable task = () -> {
             WeatherProviderUtilsCommonHelper provider = new WeatherProviderUtilsCommonHelper(dummyConnector, dummyMailProvider);

@@ -6,10 +6,10 @@ import java.util.Map;
 class WeatherProviderUtilsCommonHelper {
 
     private WeatherConnector weatherConnector;
-    private MailProvider mailProvider;
+    private WeatherReportMailProvider mailProvider;
     private Map<String, Weather> cacheWeather = new HashMap<>();
 
-    public WeatherProviderUtilsCommonHelper(WeatherConnector weatherConnector, MailProvider mailProvider) {
+    public WeatherProviderUtilsCommonHelper(WeatherConnector weatherConnector, WeatherReportMailProvider mailProvider) {
         this.weatherConnector = weatherConnector;
         this.mailProvider = mailProvider;
     }
@@ -21,7 +21,7 @@ class WeatherProviderUtilsCommonHelper {
 
             cacheWeather.put(location, weather);
 
-            mailProvider.sendMail(location, weather.getLocation(), String.valueOf(weather.getTemp()));
+            mailProvider.sendMail(weather);
 
             return weather;
         } catch (Exception e) {
