@@ -1,0 +1,8 @@
+apply plugin: 'java'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 15
+
+repositories {
+    mavenCentral()
+}
