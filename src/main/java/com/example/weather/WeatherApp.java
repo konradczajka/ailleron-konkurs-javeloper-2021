@@ -19,7 +19,9 @@ public class WeatherApp {
         WeatherReportMailProvider dummyMailProvider = weather -> {};
 
         Runnable task = () -> {
-            WeatherProviderUtilsCommonHelper provider = new WeatherProviderUtilsCommonHelper(dummyConnector, dummyMailProvider);
+            WeatherProviderUtilsCommonHelper provider = new WeatherProviderUtilsCommonHelper(
+                    new CachingWeatherConnector(dummyConnector),
+                    dummyMailProvider);
 
             String location = locations[random.nextInt(locations.length)];
 

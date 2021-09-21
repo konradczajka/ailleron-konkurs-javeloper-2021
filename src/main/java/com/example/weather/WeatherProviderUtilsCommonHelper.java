@@ -1,13 +1,9 @@
 package com.example.weather;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class WeatherProviderUtilsCommonHelper {
 
     private WeatherConnector weatherConnector;
     private WeatherReportMailProvider mailProvider;
-    private Map<String, Weather> cacheWeather = new HashMap<>();
 
     public WeatherProviderUtilsCommonHelper(WeatherConnector weatherConnector, WeatherReportMailProvider mailProvider) {
         this.weatherConnector = weatherConnector;
@@ -18,8 +14,6 @@ class WeatherProviderUtilsCommonHelper {
 
         try {
             Weather weather = weatherConnector.weather(location);
-
-            cacheWeather.put(location, weather);
 
             mailProvider.sendMail(weather);
 
