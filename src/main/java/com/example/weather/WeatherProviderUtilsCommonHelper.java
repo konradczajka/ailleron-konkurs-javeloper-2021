@@ -32,10 +32,6 @@ class WeatherProviderUtilsCommonHelper {
         }
     }
 
-    public void setWeatherConnector(WeatherConnector connector) {
-        this.weatherConnector = connector;
-    }
-
     private static void log(Object object) {
         System.out.println("Weather=" + object.toString());
     }
